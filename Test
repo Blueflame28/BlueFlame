@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kristal Api Biru</title>
+    <style>
+        /* Mengatur tampilan dasar halaman */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #030712; /* Warna latar belakang gelap agar sesuai gambar */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Pembungkus Gambar */
+        .image-container {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            box-shadow: 0 0 50px rgba(0, 150, 255, 0.25); /* Efek berpijar di sekeliling gambar */
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Efek hover lembut pada gambar */
+        .image-container:hover {
+            transform: scale(1.01);
+            box-shadow: 0 0 70px rgba(0, 180, 255, 0.4);
+        }
+
+        /* Pengaturan gambar agar responsive */
+        .image-container img {
+            width: 100%;
+            height: auto;
+            max-height: 85vh;
+            display: block;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <!-- 
+          PASTIKAN: Simpan file gambar di folder yang sama dengan index.html,
+          dan beri nama file gambar tersebut "kristal-api.jpg" 
+        -->
+        <img src="kristal-api.jpg" alt="Kristal Api Biru">
+    </div>
+
+</body>
+</html>
