@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eksperimen CSS: Api Kaca Biru</title>
+    <style>
+        /* Mengatur background gelap dan menengahkan objek */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050b18; /* Biru tua pekat */
+            background-image: radial-gradient(circle at center, #0a162a 0%, #050b18 70%); /* Sedikit kabut di tengah */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+
+        /* Container untuk efek cahaya (halo) */
+        .flame-wrapper {
+            position: relative;
+            filter: drop-shadow(0 0 40px rgba(0, 160, 255, 0.6)); /* Cahaya luar biru */
+        }
+
+        /* Bentuk utama Api */
+        .crystal-flame {
+            width: 250px;
+            height: 400px;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.4) 0%,   /* 'Glow' putih di sisi kiri atas */
+                rgba(0, 191, 255, 0.9) 30%,     /* Biru terang transparan */
+                rgba(0, 0, 139, 0.9) 70%,       /* Biru tua transparan */
+                rgba(138, 43, 226, 0.5) 100%);  /* Sedikit ungu di bagian bawah */
+            
+            border: 2px solid rgba(255, 255, 255, 0.2); /* Pinggiran kaca */
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.4); /* Kilau dalam */
+            
+            /* Membuat bentuk kurva api yang kompleks */
+            clip-path: polygon(
+                50% 0%, /* Ujung atas */
+                70% 20%, 85% 45%, 95% 65%, 95% 85%, /* Sisi kanan kurva */
+                50% 100%, /* Dasar */
+                5% 85%, 5% 65%, 15% 45%, 30% 20%, /* Sisi kiri kurva */
+                45% 30% /* Lekukan dalam */
+            );
+            
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; /* Menghaluskan bentuk polygonal */
+            backdrop-filter: blur(5px); /* Menambah efek kaca tembus pandang */
+        }
+
+        /* Bagian dalam api untuk efek putaran cahaya */
+        .crystal-flame::after {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: 15%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(circle at center, 
+                rgba(0, 255, 255, 0.5) 0%, /* Inti terang */
+                rgba(0, 100, 255, 0.3) 100%);
+            
+            clip-path: polygon(
+                50% 10%, 65% 25%, 75% 45%, 75% 70%,
+                50% 90%, 
+                25% 70%, 25% 45%, 35% 25%,
+                45% 35%
+            );
+            filter: blur(8px); /* Melembutkan efek putaran */
+        }
+
+        /* Refleksi di lantai (Permukaan Reflektif) */
+        .floor-reflection {
+            position: absolute;
+            bottom: -150px;
+            left: 50%;
+            transform: translateX(-50%) scaleY(-0.7); /* Membalikkan dan memendekkan */
+            width: 250px;
+            height: 400px;
+            opacity: 0.3; /* Samar-samar */
+            filter: blur(15px); /* Kabur */
+            
+            /* Gunakan latar belakang yang sama dengan api */
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.4) 0%,
+                rgba(0, 191, 255, 0.9) 30%,
+                rgba(0, 0, 139, 0.9) 70%);
+            
+            clip-path: polygon(
+                50% 0%, 70% 20%, 85% 45%, 95% 65%, 95% 85%, 
+                50% 100%, 
+                5% 85%, 5% 65%, 15% 45%, 30% 20%, 
+                45% 30%
+            );
+        }
+
+        /* Teks 'watermark' seperti di gambar */
+        .watermark {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 12px;
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="floor-reflection"></div>
+    
+    <div class="flame-wrapper">
+        <div class="crystal-flame"></div>
+    </div>
+
+    <div class="watermark">Representasi CSS dari image_0.png</div>
+
+</body>
+</html>
